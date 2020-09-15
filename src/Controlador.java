@@ -43,5 +43,11 @@ public class Controlador {
 		miModelo.modificarCliente(nombre, apellidos, tinte, mechas, fecha, nomAnt, apeAnt, fecAnt);
 	}
 	
+	public String modificarFecha(String fec) {
+		String [] fecha = fec.split("/");
+		String fechaperfect = fecha[1]+"/"+ fecha[0]+"/" +fecha[2];
+		return fechaperfect;
+	}
+	
 	
 }
