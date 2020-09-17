@@ -19,7 +19,7 @@ public class Modelo {
 	private Connection conexion;
 	private DefaultTableModel table;
 
-	private String sqlMostrar = "SELECT NOMBRE, APELLIDOS, TINTE, MECHAS, FECHA FROM ivan.CLIENTES";
+	private String sqlMostrar = "SELECT NOMBRE, APELLIDOS, TINTE, MECHAS, (TO_CHAR(FECHA,'DD/MM/YYYY')) FROM ivan.CLIENTES";
 	private String user = "";
 	private String pas = "";
 	private String miUrl = "";
@@ -221,7 +221,7 @@ public class Modelo {
 	
 	public void filtrarLisCli(String where) {
 		if (where == "")
-			JOptionPane.showMessageDialog(null, "Debe introducir algun dato para filtrar", "Adevertencia",
+			JOptionPane.showMessageDialog(null, "Debe introducir algun dato para filtrar", "Advertencia",
 					JOptionPane.WARNING_MESSAGE);
 		else {
 			// Quitamos el ultimo AND sobrante
@@ -233,5 +233,26 @@ public class Modelo {
 		}
 
 	}
+	
+	public void insertarAlumnos(String nombre, String apellidos, String tinte, String mechas, String fecha) {
+		String sql = "INSERT INTO ivan.CLIENTES (nombre,apellidos,tinte,mechas,fecha) VALUES(?, ?, ?, ?, ?)";
+		try {
+			PreparedStatement stmt = conexion.prepareStatement(sql);
+			stmt.setString(1, nombre);
+			stmt.setString(2, apellidos);
+			stmt.setString(3, tinte);
+			stmt.setString(4, mechas);
+			stmt.setString(5, fecha);
+			stmt.executeUpdate();
+			insertado = true;
+
+			System.out.println("Guardado con exito");
+		} catch (SQLException e) {
+			insertado = false;
+			System.out.println("Algun dato incorrecto.");
+		}
+
+	}
+
 
 }

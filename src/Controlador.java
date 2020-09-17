@@ -40,13 +40,25 @@ public class Controlador {
 		String apellidos = miVista.getApellidos();
 		String tinte = miVista.getTinte();
 		String mechas = miVista.getMechas();
+		System.out.println(fecha);
 		miModelo.modificarCliente(nombre, apellidos, tinte, mechas, fecha, nomAnt, apeAnt, fecAnt);
 	}
 	
 	public String modificarFecha(String fec) {
-		String [] fecha = fec.split("/");
-		String fechaperfect = fecha[1]+"/"+ fecha[0]+"/" +fecha[2];
-		return fechaperfect;
+		String Fec_naci = fec.substring(0, 10);
+		String[] fechaa = Fec_naci.split("-");
+		Fec_naci = fechaa[2] + "/" + fechaa[1] + "/" + fechaa[0];
+		return Fec_naci;
+	}
+	
+	public void insertarAlumno() {
+		String fecha = miVista.getFecha();
+		String nombre = miVista.getNombre();
+		String apellidos = miVista.getApellidos();
+		String tinte = miVista.getTinte();
+		String mechas = miVista.getMechas();
+		System.out.println(fecha);
+		miModelo.insertarCliente(nombre, apellidos, tinte, mechas, fecha);
 	}
 	
 	
