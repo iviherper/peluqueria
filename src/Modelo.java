@@ -19,7 +19,7 @@ public class Modelo {
 	private Connection conexion;
 	private DefaultTableModel table;
 
-	private String sqlMostrar = "SELECT NOMBRE, APELLIDOS, TINTE, MECHAS, (TO_CHAR(FECHA,'DD/MM/YYYY')) FROM ivan.CLIENTES";
+	private String sqlMostrar = "SELECT NOMBRE, APELLIDOS, TINTE, MECHAS, (TO_CHAR(FECHA,'DD/MM/YYYY')) AS FECHA FROM ivan.CLIENTES";
 	private String user = "";
 	private String pas = "";
 	private String miUrl = "";

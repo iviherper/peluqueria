@@ -15,14 +15,14 @@ public class Controlador {
 		String where = "";
 		if (!datos[0].equals(""))
 			where += " lower(nombre) LIKE lower('" + datos[0] + "') || '%' AND";
-		if (!datos[3].equals(""))
-			where += " lower(apellidos) LIKE lower('" + datos[3] + "') || '%' AND";
-		if (!datos[2].equals(""))
-			where += " lower(mechas) LIKE lower('" + datos[2] + "') || '%' AND";
 		if (!datos[1].equals(""))
-			where += " lower(tinte) LIKE lower('" + datos[1] + "') || '%' AND";
-		if (!datos[4].equals(""))
-			where += " lower(fecha) LIKE lower('" + datos[4] + "') || '%' AND";
+			where += " lower(apellidos) LIKE lower('" + datos[1] + "') || '%' AND";
+		if (!datos[2].equals(""))
+			where += " lower(tinte) LIKE lower('" + datos[2] + "') || '%' AND";
+		if (!datos[3].equals(""))
+			where += " lower(mechas) LIKE lower('" + datos[3] + "') || '%' AND";
+		if (!datos[4].equals("") && !datos[5].equals(""))
+			where += " Fecha between '"+datos[4]+"' and '"+datos[5]+"' AND";
 
 		miModelo.filtrarLisCli(where);
 	}

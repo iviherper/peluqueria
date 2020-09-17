@@ -48,6 +48,7 @@ public class Vista extends JFrame {
 	private JTextField filTinte;
 	private JTextField filMechas;
 	private JTextField filFecha;
+	private JTextField txtFechaNext;
 
 	public void setMiControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
@@ -171,11 +172,18 @@ public class Vista extends JFrame {
 		txtFecha.setColumns(10);
 		txtFecha.setBounds(403, 59, 85, 20);
 		panel.add(txtFecha);
+		
+		txtFechaNext = new JTextField();
+		txtFechaNext.setColumns(10);
+		txtFechaNext.setBounds(498, 59, 85, 20);
+		panel.add(txtFechaNext);
+		
 		TextPrompt placeNombre = new TextPrompt("Nombre", txtNombre);
 		TextPrompt placeApellidos = new TextPrompt("Apellidos", txtApellidos);
 		TextPrompt placeTinte = new TextPrompt("Tinte", txtTinte);
 		TextPrompt placeMechas = new TextPrompt("Mechas", txtMechas);
-		TextPrompt placeFecha = new TextPrompt("Fecha", txtFecha);
+		TextPrompt placeFecha = new TextPrompt("Fecha Inicio", txtFecha);
+		TextPrompt placeFechaFin = new TextPrompt("Fecha Fin", txtFechaNext);
 
 		btnFiltrar = new JButton("Filtrar");
 		btnFiltrar.addActionListener(new ActionListener() {
@@ -320,11 +328,6 @@ public class Vista extends JFrame {
 		TextPrompt EdiMechas = new TextPrompt("Mechas", filMechas);
 		TextPrompt EdiFecha = new TextPrompt("Fecha", filFecha);
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Vista.class.getResource("/Imagenes/dd.jpg")));
-		lblNewLabel.setBounds(0, 0, 1265, 594);
-		panel.add(lblNewLabel);
-
 		JLabel lblTitulo = new JLabel("Unisex Belly");
 		lblTitulo.setForeground(new Color(220, 20, 60));
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 37));
@@ -377,16 +380,16 @@ public class Vista extends JFrame {
 
 	public String[] getDatos() {
 		String[] datos = new String[6];
-		datos[0] = filNombre.getText();
-		datos[1] = filApellidos.getText();
-		datos[2] = filTinte.getText();
-		datos[3] = filMechas.getText();
-		datos[4] = filFecha.getText();
+		datos[0] = txtNombre.getText();
+		datos[1] = txtApellidos.getText();
+		datos[2] = txtTinte.getText();
+		datos[3] = txtMechas.getText();
+		datos[4] = txtFecha.getText();
+		datos[5] = txtFechaNext.getText();
 		return datos;
 	}
 
 	public void generaFiltro(DefaultTableModel tabla) {
 		table.setModel(tabla);
 	}
-
 }
