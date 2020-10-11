@@ -80,7 +80,7 @@ public class Modelo {
 				e.printStackTrace();
 			}
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conexion = DriverManager.getConnection(miUrl, user, pas);
+			conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "ivan", "Abrete01");
 			System.out.println("Conexion con ORACLE establecida");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Driver JDBC No encontrado");
