@@ -125,6 +125,7 @@ public class Vista extends JFrame{
 		
 		table = new JTable();
 		contentPane = new JPanel();
+		table.setAutoCreateRowSorter(true);
 		table.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
@@ -252,8 +253,10 @@ public class Vista extends JFrame{
 					if (option == 0) {
 						miControlador.borrarCli();
 						limpiarCampos();
-						JOptionPane.showMessageDialog(null, "La fila ha sido borrada con éxito", "Advertencia",
-								JOptionPane.INFORMATION_MESSAGE);
+//						JOptionPane.showMessageDialog(null, "La fila ha sido borrada con éxito", "Advertencia",
+//								JOptionPane.INFORMATION_MESSAGE);
+						String ssql = miModelo.getLisCli();
+						table.setModel(miModelo.getTabla(ssql));
 
 					}
 
@@ -283,8 +286,10 @@ public class Vista extends JFrame{
 						limpiarCampos();
 						boolean insertado = miModelo.malInsertado();
 						if (insertado) {
-							JOptionPane.showMessageDialog(null, "La fila ha sido modificada con éxito", "Advertencia",
-									JOptionPane.INFORMATION_MESSAGE);
+//							JOptionPane.showMessageDialog(null, "La fila ha sido modificada con éxito", "Advertencia",
+//									JOptionPane.INFORMATION_MESSAGE);
+							String ssql = miModelo.getLisCli();
+							table.setModel(miModelo.getTabla(ssql));
 						} else {
 							JOptionPane.showMessageDialog(null,
 									"La fila no ha sido modificada, datos mal introducidos ", "Advertencia",
@@ -299,6 +304,24 @@ public class Vista extends JFrame{
 		panel_modif.add(btnModificar);
 		
 		JButton btnInsertar = new JButton("Insertar");
+		btnInsertar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int fsel = table.getSelectedRow();
+				miControlador.insertarAlumno();
+				limpiarCampos();
+				boolean insertado = miModelo.malInsertado();
+				if (insertado) {
+//					JOptionPane.showMessageDialog(null, "La nueva fila ha sido insertada con éxito", "Advertencia",
+//							JOptionPane.INFORMATION_MESSAGE);
+					String ssql = miModelo.getLisCli();
+					table.setModel(miModelo.getTabla(ssql));
+				} else {
+					JOptionPane.showMessageDialog(null, "La nueva fila no ha sido insertada, datos mal introducidos ",
+							"Advertencia", JOptionPane.INFORMATION_MESSAGE);
+				}
+
+			}
+		});
 		btnInsertar.setBounds(250, 352, 100, 30);
 		panel_modif.add(btnInsertar);
 		
@@ -312,7 +335,6 @@ public class Vista extends JFrame{
 		lblNewLabel.setIcon(new ImageIcon(Vista.class.getResource("/Imagenes/dd.jpg")));
 		lblNewLabel.setBounds(0, 0, 1265, 594);
 		panel.add(lblNewLabel);
-		
 		JLabel lblTitulo = new JLabel("Unisex Belly");
 		lblTitulo.setForeground(new Color(220, 20, 60));
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 37));
