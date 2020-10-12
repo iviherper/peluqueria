@@ -328,6 +328,11 @@ public class Vista extends JFrame {
 		TextPrompt EdiTinte = new TextPrompt("Tinte", filTinte);
 		TextPrompt EdiMechas = new TextPrompt("Mechas", filMechas);
 		TextPrompt EdiFecha = new TextPrompt("Fecha", filFecha);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Vista.class.getResource("/Imagenes/dd.jpg")));
+		lblNewLabel.setBounds(0, 0, 1265, 594);
+		panel.add(lblNewLabel);
 
 		JLabel lblTitulo = new JLabel("Unisex Belly");
 		lblTitulo.setForeground(new Color(220, 20, 60));
