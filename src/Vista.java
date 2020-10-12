@@ -89,7 +89,7 @@ public class Vista extends JFrame{
 		
 		setTitle("Unisex Belly");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1280, 720);
+		setBounds(0, 0, 1280, 720);
 		getContentPane().setLayout(null);
 		
 		panel = new JPanel();
