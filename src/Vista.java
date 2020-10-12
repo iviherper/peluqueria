@@ -124,6 +124,7 @@ public class Vista extends JFrame {
 
 		table = new JTable();
 		contentPane = new JPanel();
+		table.setAutoCreateRowSorter(true);
 		table.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
@@ -255,8 +256,10 @@ public class Vista extends JFrame {
 					if (option == 0) {
 						miControlador.borrarCli();
 						limpiarCampos();
-						JOptionPane.showMessageDialog(null, "La fila ha sido borrada con éxito", "Advertencia",
-								JOptionPane.INFORMATION_MESSAGE);
+//						JOptionPane.showMessageDialog(null, "La fila ha sido borrada con éxito", "Advertencia",
+//								JOptionPane.INFORMATION_MESSAGE);
+						String ssql = miModelo.getLisCli();
+						table.setModel(miModelo.getTabla(ssql));
 
 					}
 
@@ -287,8 +290,10 @@ public class Vista extends JFrame {
 						limpiarCampos();
 						boolean insertado = miModelo.malInsertado();
 						if (insertado) {
-							JOptionPane.showMessageDialog(null, "La fila ha sido modificada con éxito", "Advertencia",
-									JOptionPane.INFORMATION_MESSAGE);
+//							JOptionPane.showMessageDialog(null, "La fila ha sido modificada con éxito", "Advertencia",
+//									JOptionPane.INFORMATION_MESSAGE);
+							String ssql = miModelo.getLisCli();
+							table.setModel(miModelo.getTabla(ssql));
 						} else {
 							JOptionPane.showMessageDialog(null,
 									"La fila no ha sido modificada, datos mal introducidos ", "Advertencia",
@@ -310,8 +315,10 @@ public class Vista extends JFrame {
 				limpiarCampos();
 				boolean insertado = miModelo.malInsertado();
 				if (insertado) {
-					JOptionPane.showMessageDialog(null, "La nueva fila ha sido insertada con éxito", "Advertencia",
-							JOptionPane.INFORMATION_MESSAGE);
+//					JOptionPane.showMessageDialog(null, "La nueva fila ha sido insertada con éxito", "Advertencia",
+//							JOptionPane.INFORMATION_MESSAGE);
+					String ssql = miModelo.getLisCli();
+					table.setModel(miModelo.getTabla(ssql));
 				} else {
 					JOptionPane.showMessageDialog(null, "La nueva fila no ha sido insertada, datos mal introducidos ",
 							"Advertencia", JOptionPane.INFORMATION_MESSAGE);
