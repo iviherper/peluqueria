@@ -363,8 +363,8 @@ public class Vista extends JFrame{
 		datosOld[1]= (String) table.getValueAt(fila, 1);
 		String fecha=(String) table.getValueAt(fila, 4);
 		String Fec_naci = fecha.substring(0, 10);
-		String[] fechaa = Fec_naci.split("-");
-		Fec_naci = fechaa[2] + "/" + fechaa[1] + "/" + fechaa[0];
+//		String[] fechaa = Fec_naci.split("-");
+//		Fec_naci = fechaa[2] + "/" + fechaa[1] + "/" + fechaa[0];
 		datosOld[2]= Fec_naci;
 		
 		return datosOld;
@@ -381,8 +381,8 @@ public class Vista extends JFrame{
 		filTinte.setText((String) table.getValueAt(fila, 2));
 		filMechas.setText((String) table.getValueAt(fila, 3));
 		String Fec_naci = fecha.substring(0, 10);
-		String[] fechaa = Fec_naci.split("-");
-		Fec_naci = fechaa[2] + "/" + fechaa[1] + "/" + fechaa[0];
+//		String[] fechaa = Fec_naci.split("/");
+//		Fec_naci = fechaa[2] + "/" + fechaa[1] + "/" + fechaa[0];
 		filFecha.setText(Fec_naci);
 	}
 
