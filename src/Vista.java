@@ -124,6 +124,7 @@ public class Vista extends JFrame {
 
 		table = new JTable();
 		contentPane = new JPanel();
+		table.setAutoCreateRowSorter(true);
 		table.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
