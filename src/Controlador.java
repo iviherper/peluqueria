@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Controlador {
 	private Vista miVista;
@@ -22,7 +24,14 @@ public class Controlador {
 		if (!datos[3].equals(""))
 			where += " lower(mechas) LIKE lower('" + datos[3] + "') || '%' AND";
 		if (!datos[4].equals("") && !datos[5].equals(""))
-			where += " Fecha between '"+datos[4]+"' and '"+datos[5]+"' AND";
+			where += " Fecha between '" + datos[4] + "' and '" + datos[5] + "' AND";
+		else if (!datos[4].equals("")) {
+			Date myDate = new Date();
+			where += " Fecha between '" + datos[4] + "' and '" + new SimpleDateFormat("dd-MM-yyyy").format(myDate)
+					+ "' AND";
+		} else if (!datos[5].equals("")) {
+			where += " Fecha between '01011800' and '" + datos[5] + "' AND";
+		}
 
 		miModelo.filtrarLisCli(where);
 	}
